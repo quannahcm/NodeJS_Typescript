@@ -1,12 +1,24 @@
-import express, { Request, Response } from 'express';
+import express, { Express, Request, Response } from 'express';
+import webRoutes from './routers/web';
+import "dotenv/config"
+import { configViewEngine } from './config/viewEngine';
+import { configBodyRequest } from './config/bodyRequest';
+import { configStaticFile } from './config/staticFile';
+import getConnection from './config/database';
 
-const app = express();
-const port: number = 3000;
+const app: Express = express();
+const port: number = Number(process.env.PORT) || 3000;
 
-// Sử dụng Type Request và Response để TS kiểm soát dữ liệu
-app.get('/', (req: Request, res: Response) => {
-    res.send('Chào Quý Ông Tori');
-});
+//config ViewEngine, BodyRequest, StaticFile
+configViewEngine(app);
+configBodyRequest(app)
+configStaticFile(app, 'public')
+
+//config route
+webRoutes(app)
+
+//config Database Connection
+getConnection()
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
