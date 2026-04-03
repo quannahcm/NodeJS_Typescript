@@ -1,4 +1,4 @@
-import getConnection from "../config/database"
+import getConnection from "config/database"
 const pool = getConnection()
 
 const handleCreateUser = async (

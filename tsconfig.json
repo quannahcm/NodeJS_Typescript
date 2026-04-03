@@ -6,6 +6,20 @@
     "sourceMap": true,
     "skipLibCheck": true,
     "outDir": "dist",
-    "rootDir": "src"
-  }
+    "rootDir": "src",
+    "paths": {
+      "controllers/*": [
+        "./src/controllers/*"
+      ],
+      "config/*": [
+        "./src/config/*"
+      ],
+      "services/*": [
+        "./src/services/*"
+      ],
+      "routers/*": [
+        "./src/routers/*"
+      ],
+    }
+  },
 }

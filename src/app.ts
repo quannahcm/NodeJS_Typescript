@@ -1,10 +1,11 @@
 import express, { Express, Request, Response } from 'express';
-import webRoutes from './routers/web';
+import webRoutes from 'routers/web';
+
 import "dotenv/config"
-import { configViewEngine } from './config/viewEngine';
-import { configBodyRequest } from './config/bodyRequest';
-import { configStaticFile } from './config/staticFile';
-import getConnection from './config/database';
+import { configViewEngine } from 'config/viewEngine';
+import { configBodyRequest } from 'config/bodyRequest';
+import { configStaticFile } from 'config/staticFile';
+import getConnection from 'config/database';
 
 const app: Express = express();
 const port: number = Number(process.env.PORT) || 3000;
@@ -21,5 +22,5 @@ webRoutes(app)
 getConnection()
 
 app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`);
+    console.log(`Open:  ${port}`);
 });
